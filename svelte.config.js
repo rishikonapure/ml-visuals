@@ -1,10 +1,11 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
     adapter: adapter({
-      runtime: 'nodejs22.x'  // stable Node.js runtime on Vercel
+      // SPA fallback — lets dynamic routes like /[algo] work client-side
+      fallback: 'index.html'
     })
   }
 };
